@@ -33,7 +33,7 @@ def construct_blueprint(app, mongo):
                                          "slack_user_name": user_dict["user_name"]})
         new_user = mongo.db.users.find_one({'_id': user_id})
         # réponse
-        retour = "user créé : " + json.dumps(new_user, default=json_util.default)
+        retour = "Le wallet **" + wallet_address_to_insert + "** a bien été ajouté"
         return retour, 200
 
     @users_route.route('/users', methods=['GET'])
@@ -49,4 +49,3 @@ def construct_blueprint(app, mongo):
             return "error", 403
 
     return users_route
-
